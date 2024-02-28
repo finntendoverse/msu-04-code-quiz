@@ -4,10 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Code Quiz</title>
+    <title>Coding Quiz</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <h1>Coding quiz</h1>
+    <p>Are you up to the challenge? Test your knowledge of web development with this coding quiz! The quiz consists of 10 multiple-choice questions covering various topics such as HTML, CSS, and JavaScript. Choose the correct answer from the provided options for each question. Try to complete the quiz before time runs out. Good luck!</p>
+    <button id="start-quiz">Start Quiz!</button>
+
+    <div class="quiz">
+      <div class="timer"></div>
+
+      <h2>What does HTML stand for?</h2>
+      <button class="correct">Hyper Text Markup Language</button>
+      <button class="incorrect">Hyperlinks and Text Markup Language</button>
+      <button class="incorrect">Home Tool Markup Language</button>
+      <button class="incorrect">Hyper Tool Markup Language</button>
+
+      <h2>Which of the following is NOT a programming language?</h2>
+      <button class="incorrect">HTML</button>
+      <button class="incorrect">CSS</button>
+      <button class="incorrect">JavaScript</button>
+      <button class="correct">GitHub</button>
+
+      <h2>What does CSS stand for?</h2>
+      <button class="incorrect">Creative Style Sheets</button>
+      <button class="incorrect">Computer Style Sheets</button>
+      <button class="correct">Cascading Style Sheets</button>
+      <button class="incorrect">Colorful Style Sheets</button>
+
+      <h2>Which symbol is used to denote an ID in CSS?</h2>
+      <button class="correct">#</button>
+      <button class="incorrect">.</button>
+      <button class="incorrect">&</button>
+      <button class="incorrect">@</button>
+
+      <h2>What is the correct way to include an external JavaScript file in your HTML?</h2>
+      <button class="correct">&LT;script src="script.js"&GT;&LT;/script&GT;</button>
+      <button class="incorrect">&LT;script href="script.js"&GT;&LT;/script&GT;</button>
+      <button class="incorrect">&LT;script link="script.js"&GT;&LT;/script&GT;</button>
+      <button class="incorrect">&LT;script include="script.js"&GT;&LT;/script&GT;</button>
+
+      <h2>Which of the following is a block-level element in HTML?</h2>
+      <button class="incorrect">&LT;span&GT;</button>
+      <button class="correct">&LT;div&GT;</button>
+      <button class="incorrect">&LT;a&GT;</button>
+      <button class="incorrect">&LT;img&GT;</button>
+
+      <h2>What is the purpose of the "alt" attribute in an <img> tag?</h2>
+      <button class="incorrect">It specifies the image width</button>
+      <button class="correct">It provides alternative text for the image</button>
+      <button class="incorrect">It sets the image alignment</button>
+      <button class="incorrect">It defines the image source</button>
+
+      <h2>Which of the following is NOT a valid CSS property?</h2>
+      <button class="incorrect">font-size</button>
+      <button class="correct">text-color</button>
+      <button class="incorrect">background-color</button>
+      <button class="incorrect">border-radius</button>
+
+      <h2>What is the correct way to declare an unchanging variable in JavaScript?</h2>
+      <button class="incorrect">var x = 5;</button>
+      <button class="incorrect">variable x = 5;</button>
+      <button class="incorrect">let x = 5;</button>
+      <button class="correct">const x = 5;</button>
+
+      <h2>What does the "flex-direction" property in CSS control?</h2>
+      <button class="incorrect">The spacing between flex items</button>
+      <button class="incorrect">The alignment of flex items</button>
+      <button class="incorrect">The order of flex items</button>
+      <button class="correct">The direction of flex items</button>
+    </div>
+
+    <div class="score">
+      <form>
+        <label for="name">Your name</label>
+        <input id="name" type="text" placeholder="Francis Nerr">
+      </form>
+      <h2>High Scores</h2>
+      <div class="score-1"></div>
+      <div class="score-2"></div>
+      <div class="score-3"></div>
+    </div>
+
     <script src="scripts/script.js"></script>
   </body>
 </html>
