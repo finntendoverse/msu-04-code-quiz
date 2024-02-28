@@ -47,3 +47,8 @@ input {
 #score-3::before {
     content: "#3 ";
 }
+
+.quiz,
+.score {
+    display: none;
+}
