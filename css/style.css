@@ -49,6 +49,6 @@ input {
 }
 
 .quiz,
-.score {
+#score {
     display: none;
 }
