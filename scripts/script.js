@@ -14,11 +14,17 @@ let question9 = document.querySelector("#question-9");
 let question10 = document.querySelector("#question-10");
 let scoreboard = document.querySelector("#score");
 
+let wrongAnswer = document.querySelectorAll(".incorrect")
+let rightAnswer = document.querySelectorAll(".correct")
+let alert = document.querySelector("#alert");
+
+// function to start the quiz
 quizStart.addEventListener("click", function() {
     quizIntro.setAttribute("style", "display: none;");
     question1.setAttribute("style", "display: block;");
 });
 
+// function to cycle through the questions
 nextQuestion.forEach(button => {
     button.addEventListener("click", function() {
             let currentQuestion = button.parentElement;
@@ -55,6 +61,25 @@ nextQuestion.forEach(button => {
                     scoreboard.setAttribute("style", "display: block;");
                 }
             };
-            setTimeout(continueQuiz, 2000);
+            setTimeout(continueQuiz, 1500);
+    });
+});
+
+// function to alert users if they answered correctly or incorrectly
+nextQuestion.forEach(button => {
+    button.addEventListener("click", function() {
+        let message = document.createElement("p");
+
+        if (button.classList.contains("incorrect")) {
+            message.innerHTML = "incorrect ❌"
+            alert.appendChild(message);
+        } else {
+            message.innerHTML = "correct! ✅"
+            alert.appendChild(message);
+        }
+
+        setTimeout(function() {
+            message.innerHTML = "";
+        }, 1500);
     });
 });
