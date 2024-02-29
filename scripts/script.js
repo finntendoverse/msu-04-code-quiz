@@ -22,37 +22,39 @@ quizStart.addEventListener("click", function() {
 nextQuestion.forEach(button => {
     button.addEventListener("click", function() {
             let currentQuestion = button.parentElement;
-            console.log(currentQuestion);
-            if (currentQuestion.id === "question-1") {
-                question1.setAttribute("style", "display: none;");
-                question2.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-2") {
-                question2.setAttribute("style", "display: none;");
-                question3.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-3") {
-                question3.setAttribute("style", "display: none;");
-                question4.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-4") {
-                question4.setAttribute("style", "display: none;");
-                question5.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-5") {
-                question5.setAttribute("style", "display: none;");
-                question6.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-6") {
-                question6.setAttribute("style", "display: none;");
-                question7.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-7") {
-                question7.setAttribute("style", "display: none;");
-                question8.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-8") {
-                question8.setAttribute("style", "display: none;");
-                question9.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-9") {
-                question9.setAttribute("style", "display: none;");
-                question10.setAttribute("style", "display: block;");
-            } else if (currentQuestion.id === "question-10") {
-                question10.setAttribute("style", "display: none;");
-                scoreboard.setAttribute("style", "display: block;");
-            }
-    })
+            let continueQuiz = function() {
+                if (currentQuestion.id === "question-1") {
+                    question1.setAttribute("style", "display: none;");
+                    question2.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-2") {
+                    question2.setAttribute("style", "display: none;");
+                    question3.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-3") {
+                    question3.setAttribute("style", "display: none;");
+                    question4.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-4") {
+                    question4.setAttribute("style", "display: none;");
+                    question5.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-5") {
+                    question5.setAttribute("style", "display: none;");
+                    question6.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-6") {
+                    question6.setAttribute("style", "display: none;");
+                    question7.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-7") {
+                    question7.setAttribute("style", "display: none;");
+                    question8.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-8") {
+                    question8.setAttribute("style", "display: none;");
+                    question9.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-9") {
+                    question9.setAttribute("style", "display: none;");
+                    question10.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-10") {
+                    question10.setAttribute("style", "display: none;");
+                    scoreboard.setAttribute("style", "display: block;");
+                }
+            };
+            setTimeout(continueQuiz, 2000);
+    });
 });
