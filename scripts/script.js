@@ -34,23 +34,23 @@ let score3 = document.querySelector("#score-3");
 
 // timer variables
 let timerElement = document.querySelector("#timer");
+let timer;
 let time = 59;
 
 // Play again button variable
 let playAgain = document.querySelector("#play-again");
 
-// starts the quiz when the start button is clicked
-quizStart.addEventListener("click", function() {                // WHEN the start button is clicked
-    quizIntro.setAttribute("style", "display: none;");          // THEN the introduction is removed from the page
-    question1.setAttribute("style", "display: block;");         // THEN the first question is displayed
-
+// timer function
+let startTimer = function() {
+    time = 59;
     timerElement.setAttribute("style", "display: block");       // THEN the timer is displayed
     timerElement.textContent = 60;                              // THEN the timer text reads 60
-    let timer = setInterval(function() {
+    timer = setInterval(function() {
         timerElement.textContent = time;                        // THEN the timer text reads 59
         time = -- time;                                         // THEN the timer counts down by 1
         
         if (time <= -1) {                                       // IF there's less than a second on the timer
+            clearInterval(timer);
             timerElement.setAttribute("style", "display: none;");
             timerElement.setAttribute("style", "display: none;");
             question1.setAttribute("style", "display: none;");
@@ -68,6 +68,13 @@ quizStart.addEventListener("click", function() {                // WHEN the star
         
         return time;                                            // THEN the time is updated
     }, 1000);                                                   // THEN this loops every second, causing the time to continually count down by 1
+}
+
+// starts the quiz when the start button is clicked
+quizStart.addEventListener("click", function() {                // WHEN the start button is clicked
+    quizIntro.setAttribute("style", "display: none;");          // THEN the introduction is removed from the page
+    question1.setAttribute("style", "display: block;");         // THEN the first question is displayed
+    startTimer();
 });
 
 // cycles through the 10 questions
@@ -75,7 +82,22 @@ nextQuestion.forEach(button => {
     button.addEventListener("click", function() {
             let currentQuestion = button.parentElement;
             let continueQuiz = function() {
-                if (currentQuestion.id === "question-1") {
+                if (time <= -1) {
+                    clearInterval(timer);
+                    timerElement.setAttribute("style", "display: none;");
+                    timerElement.setAttribute("style", "display: none;");
+                    question1.setAttribute("style", "display: none;");
+                    question2.setAttribute("style", "display: none;");
+                    question3.setAttribute("style", "display: none;");
+                    question4.setAttribute("style", "display: none;");
+                    question5.setAttribute("style", "display: none;");
+                    question6.setAttribute("style", "display: none;");
+                    question7.setAttribute("style", "display: none;");
+                    question8.setAttribute("style", "display: none;");
+                    question9.setAttribute("style", "display: none;");
+                    question10.setAttribute("style", "display: none;");
+                    scoreboard.setAttribute("style", "display: block;");
+                } else if (currentQuestion.id === "question-1") {
                     question1.setAttribute("style", "display: none;");
                     question2.setAttribute("style", "display: block;");
                 } else if (currentQuestion.id === "question-2") {
@@ -135,44 +157,41 @@ nextQuestion.forEach(button => {
             return score;
         } else {
             time = time - 10;
-            
-            if (time <= -1) {
-                timerElement.setAttribute("style", "display: none;");
-                timerElement.setAttribute("style", "display: none;");
-                question1.setAttribute("style", "display: none;");
-                question2.setAttribute("style", "display: none;");
-                question3.setAttribute("style", "display: none;");
-                question4.setAttribute("style", "display: none;");
-                question5.setAttribute("style", "display: none;");
-                question6.setAttribute("style", "display: none;");
-                question7.setAttribute("style", "display: none;");
-                question8.setAttribute("style", "display: none;");
-                question9.setAttribute("style", "display: none;");
-                question10.setAttribute("style", "display: none;");
-                scoreboard.setAttribute("style", "display: block;");
-            }
         }
     });
 });
+
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+console.log(highScores);
 
 // displays user's name on the scoreboard
 form.addEventListener("submit", function() {
     event.preventDefault(); 
     
     let userName = document.querySelector("#name").value;
-    let firstScore = userName + ": " + score + " points";
+    let userScore = score;
 
-    score1.textContent = firstScore;
+    let userProfile = {
+        name: userName,
+        score: userScore
+    };
+
+    highScores.push(userProfile);
+    console.log(highScores);
+
+    score1.textContent = highScores;
 });
 
-let oldScore = 0;
-let oldHighScore = highScore
+// let oldScore = 0;
+// let oldHighScore = highScore
 
-// Play again
+// // Play again
 playAgain.addEventListener("click", function() {
-    location.reload();
-    oldScore = score
-    localStorage.setItem("previous score", oldScore);
-    score = 0
-    return oldScore;
+    quizIntro.setAttribute("style", "display: block;");
+    scoreboard.setAttribute("style", "display: none;");
+    // location.reload();
+//     oldScore = score
+//     localStorage.setItem("previous score", oldScore);
+//     score = 0
+//     return oldScore;
 });
