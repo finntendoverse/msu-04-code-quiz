@@ -27,6 +27,7 @@ let alert = document.querySelector("#alert");
 
 // scoreboard variables
 let score = 0;
+let form = document.querySelector("#form");
 let score1 = document.querySelector("#score-1");
 let score2 = document.querySelector("#score-2");
 let score3 = document.querySelector("#score-3");
@@ -34,6 +35,9 @@ let score3 = document.querySelector("#score-3");
 // timer variables
 let timerElement = document.querySelector("#timer");
 let time = 59;
+
+// Play again button variable
+let playAgain = document.querySelector("#play-again");
 
 // starts the quiz when the start button is clicked
 quizStart.addEventListener("click", function() {                // WHEN the start button is clicked
@@ -46,15 +50,27 @@ quizStart.addEventListener("click", function() {                // WHEN the star
         timerElement.textContent = time;                        // THEN the timer text reads 59
         time = -- time;                                         // THEN the timer counts down by 1
         
-        if (time <= -1) {
-            showScoreboard();
+        if (time <= -1) {                                       // IF there's less than a second on the timer
+            timerElement.setAttribute("style", "display: none;");
+            timerElement.setAttribute("style", "display: none;");
+            question1.setAttribute("style", "display: none;");
+            question2.setAttribute("style", "display: none;");
+            question3.setAttribute("style", "display: none;");
+            question4.setAttribute("style", "display: none;");
+            question5.setAttribute("style", "display: none;");
+            question6.setAttribute("style", "display: none;");
+            question7.setAttribute("style", "display: none;");
+            question8.setAttribute("style", "display: none;");
+            question9.setAttribute("style", "display: none;");
+            question10.setAttribute("style", "display: none;");
+            scoreboard.setAttribute("style", "display: block;");
         }
         
-        return time;
+        return time;                                            // THEN the time is updated
     }, 1000);                                                   // THEN this loops every second, causing the time to continually count down by 1
 });
 
-// cycles through the 10 questions and then shows the timer
+// cycles through the 10 questions
 nextQuestion.forEach(button => {
     button.addEventListener("click", function() {
             let currentQuestion = button.parentElement;
@@ -95,7 +111,7 @@ nextQuestion.forEach(button => {
     });
 });
 
-// alerts users if they answered correctly or incorrectly
+// functions for correct and incorrect answers
 nextQuestion.forEach(button => {
     button.addEventListener("click", function() {
         let message = document.createElement("p");
@@ -115,30 +131,48 @@ nextQuestion.forEach(button => {
         // updates the score for correct answers, and subtracts time for incorrect answers
         if (button.classList.contains("correct")) {
             score = score + 10;
-            score1.textContent = "name: " + score;
+            localStorage.setItem("score", score);
+            return score;
         } else {
             time = time - 10;
             
             if (time <= -1) {
-                showScoreboard();
+                timerElement.setAttribute("style", "display: none;");
+                timerElement.setAttribute("style", "display: none;");
+                question1.setAttribute("style", "display: none;");
+                question2.setAttribute("style", "display: none;");
+                question3.setAttribute("style", "display: none;");
+                question4.setAttribute("style", "display: none;");
+                question5.setAttribute("style", "display: none;");
+                question6.setAttribute("style", "display: none;");
+                question7.setAttribute("style", "display: none;");
+                question8.setAttribute("style", "display: none;");
+                question9.setAttribute("style", "display: none;");
+                question10.setAttribute("style", "display: none;");
+                scoreboard.setAttribute("style", "display: block;");
             }
         }
     });
 });
 
-// goes directly to scoreboard
-let showScoreboard = function() {
-    timerElement.setAttribute("style", "display: none;");
-    timerElement.setAttribute("style", "display: none;");
-    question1.setAttribute("style", "display: none;");
-    question2.setAttribute("style", "display: none;");
-    question3.setAttribute("style", "display: none;");
-    question4.setAttribute("style", "display: none;");
-    question5.setAttribute("style", "display: none;");
-    question6.setAttribute("style", "display: none;");
-    question7.setAttribute("style", "display: none;");
-    question8.setAttribute("style", "display: none;");
-    question9.setAttribute("style", "display: none;");
-    question10.setAttribute("style", "display: none;");
-    scoreboard.setAttribute("style", "display: block;");
-}
+// displays user's name on the scoreboard
+form.addEventListener("submit", function() {
+    event.preventDefault(); 
+    
+    let userName = document.querySelector("#name").value;
+    let firstScore = userName + ": " + score + " points";
+
+    score1.textContent = firstScore;
+});
+
+let oldScore = 0;
+let oldHighScore = highScore
+
+// Play again
+playAgain.addEventListener("click", function() {
+    location.reload();
+    oldScore = score
+    localStorage.setItem("previous score", oldScore);
+    score = 0
+    return oldScore;
+});
