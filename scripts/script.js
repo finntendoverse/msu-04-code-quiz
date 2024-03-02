@@ -139,6 +139,7 @@ nextQuestion.forEach(button => {
 nextQuestion.forEach(button => {
     button.addEventListener("click", function() {
         let message = document.createElement("p");
+        message.setAttribute("class", "alerts");
 
         if (button.classList.contains("incorrect")) {
             message.innerHTML = "incorrect ❌"

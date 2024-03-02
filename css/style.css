@@ -19,6 +19,12 @@ button {
     display: block;
     padding: 10px;
     margin: 20px 0px 20px 0px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    text-align: center;
 }
 
 label {
@@ -27,8 +33,11 @@ label {
 }
 
 input {
-    margin-top: 5px;
-    padding: 10px;
+    display: block;
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
 }
 
 .score div {
@@ -51,4 +60,19 @@ input {
 .quiz,
 #score {
     display: none;
+}
+
+.scores {
+    text-align: center;
+}
+
+#timer {
+    text-align: center;
+    color: green;
+    font-size: 2em;
+}
+
+.alerts {
+    text-align: center;
+    font-size: 1.5em;
 }
