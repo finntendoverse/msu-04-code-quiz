@@ -21,10 +21,13 @@ THEN the game is over<br>
 WHEN the game is over<br>
 THEN I can save my initials and score
 
-## Deployed Application
-[Deployed Application Link]()
+## Credits
+All of the code was written by me, but I used [this video](https://www.youtube.com/watch?v=DFhmNLKwwGw) as a reference to help me write the JavaScript for the scoreboard.
 
-![Deployed Application]()
+## Deployed Application
+[Deployed Application Link](https://finntendoverse.github.io/msu-04-code-quiz/)
+
+![Deployed Application](img/Deployed.png)
 
 ## License
 MIT License
