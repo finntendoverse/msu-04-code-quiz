@@ -126,6 +126,8 @@ nextQuestion.forEach(button => {
                     question10.setAttribute("style", "display: block;");
                 } else if (currentQuestion.id === "question-10") {
                     question10.setAttribute("style", "display: none;");
+                    timerElement.setAttribute("style", "display: none;");
+                    clearInterval(timer);
                     scoreboard.setAttribute("style", "display: block;");
                 }
             };
@@ -179,19 +181,26 @@ form.addEventListener("submit", function() {
     highScores.push(userProfile);
     console.log(highScores);
 
-    score1.textContent = highScores;
-});
+    highScores.sort((a,b) => b.score - a.score)
+    highScores.splice(3);
 
-// let oldScore = 0;
-// let oldHighScore = highScore
+    score1.textContent = highScores[0].name + ": " + highScores[0].score;
+    if (highScores.length === 1) {
+        score2.textContent = "no score yet"
+        score3.textContent = "no score yet"
+    } else if (highScores.length === 2) {
+        score2.textContent = highScores[1].name + ": " + highScores[1].score;
+        score3.textContent = "no score yet"
+    } else {
+        score2.textContent = highScores[1].name + ": " + highScores[1].score;
+        score3.textContent = highScores[2].name + ": " + highScores[2].score;
+    }
+});
 
 // // Play again
 playAgain.addEventListener("click", function() {
+    score = 0
+
     quizIntro.setAttribute("style", "display: block;");
     scoreboard.setAttribute("style", "display: none;");
-    // location.reload();
-//     oldScore = score
-//     localStorage.setItem("previous score", oldScore);
-//     score = 0
-//     return oldScore;
 });
