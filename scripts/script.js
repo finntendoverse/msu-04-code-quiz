@@ -141,7 +141,6 @@ let score1 = document.querySelector("#score-1");
 let score2 = document.querySelector("#score-2");
 let score3 = document.querySelector("#score-3");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-console.log(highScores);
 
 // function that displays the scoreboard
 let showScoreboard = function() {
@@ -189,6 +188,7 @@ form.addEventListener("submit", function() {                                    
         score2.textContent = highScores[1].name + ": " + highScores[1].score;   // THEN the second-highest score will be displayed as the second spot on the scoreboard
         score3.textContent = highScores[2].name + ": " + highScores[2].score;   // THEN the third-highest score will be displayed as the third spot on the scoreboard
     }
+    localStorage.setItem("highScores", JSON.stringify(highScores));             // THEN the high scores are saved to the local Storage
 });
 
 // Play again button variable
